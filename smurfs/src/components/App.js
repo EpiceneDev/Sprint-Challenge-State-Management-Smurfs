@@ -1,8 +1,8 @@
 import React, { useReducer } from "react";
 import { connect } from 'react-redux';
 import SmurfForm from './SmurfForm';
-import  reducer  from '../reducers/reducer';
 import SmurfList from './SmurfList';
+import { reducer } from '../reducers/reducer'
 
 
 import "./App.css";

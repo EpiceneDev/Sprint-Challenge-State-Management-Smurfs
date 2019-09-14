@@ -1,26 +1,38 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
 
 
-function SmurfForm(props) {
+class SmurfForm extends Component {
   const [input, setInput] = useState("");
 
-  const handleChanges = event => {
-    setInput(event.target.value);
+  const handleInput = event => {
+    this.setState({
+      [e.target.name]: event.target.value
+    )};
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.addSmurf(input);
-    setInput("");
+    if(!this.state.name || !this.state.age || !this.state.height) return;
+    this.props.addSmurf(this.state);
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    })
+    // this.props.history.push('/smurfs');
   };
 
-  return (
+  render() {
+    return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="Smurf" value={input} onChange={handleChanges} />
+      <input type="text" name="name" value={this.state.name} onChange={handleInput} />
+      <input type="text" name="age" value={this.state.age} onChange={handleInput} />
+      <input type="text" name="height" value={this.state.height} onChange={handleInput} />
       <button type="submit">Add Smurf!</button>
     </form>
-  );
+    );
+  }
 }
 
 

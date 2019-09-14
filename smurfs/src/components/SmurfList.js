@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import SmurfCard from './SmurfCard';
 import { getSmurfs } from '../actions/action'
 
-class SmurfList extends React.Component {
+class SmurfList extends Component {
     
   componentDidMount() {
     this.props.getSmurfs();

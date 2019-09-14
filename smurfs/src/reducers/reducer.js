@@ -2,7 +2,7 @@ const initialState = {
     smurfs: [],
 }
 
-const reducer = (state=initialState, action) => {
+export const reducer = (state=initialState, action) => {
         switch(action.type) {
             case "ADD_SMURF":
                 return { ...state, };
