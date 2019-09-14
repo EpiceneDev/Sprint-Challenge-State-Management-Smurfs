@@ -40,11 +40,8 @@ class SmurfList extends React.Component {
   }
 } 
 const mapStateToProps = state => {{
-    smurfs: state.smurfs
-    fetchingSmurfs
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
 }}
 
-export default connect (
-    mapStateToProps,
-    { getSmurfs }
-)(SmurfList)
+export default connect (mapStateToProps,{ getSmurfs })(SmurfList)
