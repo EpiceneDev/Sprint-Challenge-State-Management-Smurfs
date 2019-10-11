@@ -7,7 +7,7 @@ import { getSmurfs } from '../actions'
 const SmurfList = props => {
     
   useEffect(() => {
-    this.props.getSmurfs();
+    props.getSmurfs();
   }, []);
 
   if(props.isFetching) {
@@ -17,19 +17,22 @@ const SmurfList = props => {
     return (
         <div className="smurf-list" >
           <h2>This is the Smurf Files!</h2>
-          {this.props.fetchingSmurfs ? (
+          {/* {props.fetchingSmurfs ? (
             <Loader type="Circles" 
                   color="navy" 
                   height={80} 
                   width={80} 
-            />) :
-            <ul>{this.props.smurfs.map(smurf => {
+            />) : */}
+            {props.error && <p>{props.error}</p>}
+            <ul>{props.smurfs.map(smurf => {
               return (
-                <SmurfCard 
+                <li>
+                  <SmurfCard 
                   key={smurf.id}
                   smurf={smurf}
-                  //deleteSmurf=(this.deleteSmurf) 
-                />
+                  //deleteSmurf=(deleteSmurf) 
+                  />
+                </li>
               )
             })}
            </ul>
@@ -44,4 +47,4 @@ const mapStateToProps = state => {
     fetchingSmurfs: state.fetchingSmurfs
 }}
 
-export default connect (mapStateToProps,{ getSmurfs })(SmurfList)
+export default connect (mapStateToProps, { getSmurfs })(SmurfList)

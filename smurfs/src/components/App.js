@@ -1,15 +1,15 @@
 import React, { useReducer } from "react";
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 import SmurfForm from './SmurfForm';
 import SmurfList from './SmurfList';
-import reducer from '../reducers'
+//import reducer from '../reducers'
 
 
 import "./App.css";
 
 function App() {
   // This is setting our state to our reducer
-  const [state, dispatch] = useReducer(reducer);
+  //const [state, dispatch] = useReducer(reducer);
 
   // This is adding a Smurf to our state
   const addSmurf = item => dispatch({ type: "ADD_SMURF", payload: item });
@@ -17,9 +17,10 @@ function App() {
 
   return (
     <div className="App">
-      <SmurfForm addSmurf={addSmurf} /> */}
+      {/* <SmurfForm addSmurf={addSmurf} /> */} */}
       <SmurfList 
         Smurfs={state.smurfs}
+        addSmurf={addSmurf}
       /> 
     </div>
   );

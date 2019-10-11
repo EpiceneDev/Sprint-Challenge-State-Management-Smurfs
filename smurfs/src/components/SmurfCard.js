@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default SmurfCard = (props) => {
+const SmurfCard = props => {
     return (
         <div className="smurf-card">
             <li>{props.smurf.name}</li>
@@ -9,7 +9,8 @@ export default SmurfCard = (props) => {
             <button onClick={e => props.deleteSmurf(e, props.smurf.id)}>
                 Add Smurf!
             </button>
-            </li>
         </div>
     )
 }
+
+export default SmurfCard;
