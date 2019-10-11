@@ -6,7 +6,6 @@ export const FETCH_SMURFS_DATA_FAILURE = "FETCH_SMURFS_DATA_FAILURE";
 
 export const getSmurfs = () => dispatch => {
 
-    return dispatch => {
         dispatch({ type: FETCH_SMURFS_DATA_START });
         axios
             .get(`http://localhost:3333/smurfs`)
@@ -15,10 +14,11 @@ export const getSmurfs = () => dispatch => {
                 dispatch({ type: FETCH_SMURFS_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
-                dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err.response });
+                console.log("GET ERROR: ", err)
+                //dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err.response });
             });
-    };
 };
+
 
 export const ADD_SMURF_START = "ADD_SMURF_START";
 export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
