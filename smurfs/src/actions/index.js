@@ -37,3 +37,4 @@ export const addSmurf = smurf => dispatch => {
                 dispatch({ type: ADD_SMURF_FAILURE, payload: err });
             });
 }
+

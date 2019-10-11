@@ -21,15 +21,15 @@ const SmurfForm = props => {
       name: '',
       age: '',
       height: ''
-    })
+    });
     //props.history.push('/smurfs');
   };
 
     return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="name" value={input} onChange={handleInput} />
-      <input type="text" name="age" value={input} onChange={handleInput} />
-      <input type="text" name="height" value={input} onChange={handleInput} />
+      <input type="text" name="name"  onChange={handleInput} placeholder="Smurf Name" />
+      <input type="text" name="age"  onChange={handleInput} placeholder="Smurf Age" />
+      <input type="text" name="height"  onChange={handleInput} placeholder="Smurf Height" />
       <button type="submit">Add Smurf!</button>
     </form>
     );
@@ -41,9 +41,12 @@ const SmurfForm = props => {
 
 const mapStateToProps = state => {
     return {
-      name: state.name,
-      age: state.age,
-      height: state.height
+        smurfs: {
+            name: state.name,
+            age: state.age,
+            height: state.height,
+            id: Date.now()
+        }
     }
   }
 export default connect(mapStateToProps, {addSmurf})(SmurfForm)
