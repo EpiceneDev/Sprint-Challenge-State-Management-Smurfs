@@ -12,7 +12,7 @@ export const getSmurfs = () => dispatch => {
             .get(`http://localhost:3333/smurfs`)
             .then(res => {
                 console.log("GET Request Response: ", res);
-                dispatch({ type: FETCH_SMURFS_DATA_SUCCESS, payload: res });
+                dispatch({ type: FETCH_SMURFS_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
                 dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err });

@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { connect } from 'react-redux';
 import SmurfForm from './SmurfForm';
 import SmurfList from './SmurfList';
-import { reducer } from '../reducers'
+import reducer from '../reducers'
 
 
 import "./App.css";

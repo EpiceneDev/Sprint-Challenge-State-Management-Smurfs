@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import SmurfCard from './SmurfCard';
-import { getSmurfs } from '../actions/action'
+import { getSmurfs } from '../actions'
 
-class SmurfList extends Component {
+const SmurfList = props => {
     
-  componentDidMount() {
+  useEffect(() => {
     this.props.getSmurfs();
-  }
+  }, []);
 
-  // deleteSmurf = (e, id) => {
-  //   this.props.deletSmurf(id)
-  // }
+  if(props.isFetching) {
+    return <h2>Loading...</h2>
+};
 
-  render(){
     return (
         <div className="smurf-list" >
           <h2>This is the Smurf Files!</h2>
@@ -38,8 +37,9 @@ class SmurfList extends Component {
         </div>
     )
   }
-} 
-const mapStateToProps = state => {{
+
+const mapStateToProps = state => {
+  return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs
 }}
