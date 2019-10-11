@@ -15,14 +15,14 @@ const SmurfForm = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if(!props.state.name || !props.state.age || !props.state.height) return;
-    props.addSmurf(input);
-    setInput({
-      name: '',
-      age: '',
-      height: ''
-    });
-    //props.history.push('/smurfs');
+    if(!props.state.name || !props.state.age || !props.state.height) {
+        addSmurf(input);
+        setInput({
+        name: '',
+        age: '',
+        height: ''
+        });
+    //props.history.push('/smurfs');}
   };
 
     return (
@@ -41,7 +41,7 @@ const SmurfForm = props => {
 
 const mapStateToProps = state => {
     return {
-        smurfs: {
+        smurf: {
             name: state.name,
             age: state.age,
             height: state.height,
