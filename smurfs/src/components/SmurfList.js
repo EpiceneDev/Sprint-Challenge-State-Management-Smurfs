@@ -5,14 +5,14 @@ import SmurfCard from './SmurfCard';
 import { getSmurfs, addSmurf } from '../actions';
 
 const SmurfList = props => {
-    
+  console.log("SmurfList", props)
   useEffect(() => {
     props.getSmurfs();
   }, []);
 
   // useEffect(() => {
-  //   props.deleteSmurf();
-  // }, [deleteSmurf])
+  //   props.addSmurf();
+  // }, [props.smurfs])
 
     return (
         <div className="smurf-list" >

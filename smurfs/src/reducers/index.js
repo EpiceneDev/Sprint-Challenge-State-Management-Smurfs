@@ -32,20 +32,20 @@ const reducer = (state = initialState, action) => {
             case ADD_SMURF_START:
                 return {
                     ...state,
-                    fetchingSmurfs: true,
+                    addingSmurf: true,
                     error: ''
                 };
             case ADD_SMURF_SUCCESS:
                 return {
                     ...state,
-                    fetchingSmurfs: false,
+                    addingSmurf: false,
                     error: '',
-                    smurfs: action.payload
+                    smurfs: [...action.payload]
                 };
             case ADD_SMURF_FAILURE:
                 return {
-                    ...state,
-                    fetchingSmurfs: false,
+                    ...state.smurfs,
+                    addingSmurf: false,
                     error: action.payload
                 };
             default:

@@ -7,24 +7,22 @@ const AddSmurf = props => {
     let [newSmurf, setNewSmurf] = useState({name: '', age: '', height: ''});
 
 
-    let onSubmit = e => {
-        e.preventDefault();
-        addSmurf();
-    }
-
-    const onChange = e => {
-        let {name, value} = e.target;
+    const handleInput = event => {
         setNewSmurf({
-            ...newSmurf,
-            [name]: value
-        })
+          ...newSmurf,
+          [event.target.name]: event.target.value
+        });
+      };
+
+    const onSubmit = e => {
+        props.addSmurf(newSmurf);
     };
 
     return (
         <form onSubmit={onSubmit}>
-            <input type="text" name="name"  onChange={onChange} placeholder="Smurf Name" />
-            <input type="text" name="age"  onChange={onChange} placeholder="Smurf Age" />
-            <input type="text" name="height"  onChange={onChange} placeholder="Smurf Height" />
+            <input type="text" name="name"  onChange={handleInput} placeholder="Smurf Name" />
+            <input type="text" name="age"  onChange={handleInput} placeholder="Smurf Age" />
+            <input type="text" name="height"  onChange={handleInput} placeholder="Smurf Height" />
             <button type="submit">Add Smurf!</button>
         </form>
     );
