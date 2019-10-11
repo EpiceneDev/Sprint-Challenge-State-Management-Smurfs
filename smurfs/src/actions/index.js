@@ -15,7 +15,7 @@ export const getSmurfs = () => dispatch => {
             })
             .catch(err => {
                 console.log("GET ERROR: ", err)
-                //dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err.response });
+                dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err.response });
             });
 };
 
@@ -25,6 +25,7 @@ export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
 export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE";
 
 export const addSmurf = smurf => dispatch => {
+
     dispatch({ type: ADD_SMURF_START })
     axios
             .post(`http://localhost:3333/smurfs`, smurf)

@@ -7,9 +7,9 @@ const SmurfCard = props => {
             <li>{props.smurf.name}</li>
             <li>{props.smurf.age}</li>
             <li>{props.smurf.height}</li>
-            <button onClick={e => props.deleteSmurf(e, props.smurf.id)}>
-                Add Smurf!
-            </button>
+            {/* <button onClick={e => props.deleteSmurf(e, props.smurf.id)}>
+                Delete Smurf!
+            </button> */}
         </div>
     )
 }
