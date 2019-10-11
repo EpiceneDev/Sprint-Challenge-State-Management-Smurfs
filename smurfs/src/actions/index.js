@@ -6,17 +6,17 @@ export const FETCH_SMURFS_DATA_FAILURE = "FETCH_SMURFS_DATA_FAILURE";
 
 export const getSmurfs = () => dispatch => {
 
-        dispatch({ type: FETCH_SMURFS_DATA_START });
-        axios
-            .get(`http://localhost:3333/smurfs`)
-            .then(res => {
-                console.log("GET Request Response: ", res);
-                dispatch({ type: FETCH_SMURFS_DATA_SUCCESS, payload: res.data });
-            })
-            .catch(err => {
-                console.log("GET ERROR: ", err)
-                dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err.response });
-            });
+    dispatch({ type: FETCH_SMURFS_DATA_START });
+    axios
+        .get(`http://localhost:3333/smurfs`)
+        .then(res => {
+            //console.log("GET Request Response: ", res);
+            dispatch({ type: FETCH_SMURFS_DATA_SUCCESS, payload: res.data });
+        })
+        .catch(err => {
+            //console.log("GET ERROR: ", err)
+            dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err.response });
+        });
 };
 
 
@@ -26,15 +26,15 @@ export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE";
 
 export const addSmurf = smurf => dispatch => {
 
-    dispatch({ type: ADD_SMURF_START })
+    dispatch({ type: ADD_SMURF_START });
     axios
-            .post(`http://localhost:3333/smurfs`, smurf)
-            .then(res => {
-                console.log("GET Request Response: ", res);
-                dispatch({ type: ADD_SMURF_SUCCESS, payload: res });
-            })
-            .catch(err => {
-                dispatch({ type: ADD_SMURF_FAILURE, payload: err });
-            });
+        .post(`http://localhost:3333/smurfs`, smurf)
+        .then(res => {
+            console.log("GET Request Response: ", res);
+            dispatch({ type: ADD_SMURF_SUCCESS, payload: res });
+        })
+        .catch(err => {
+            dispatch({ type: ADD_SMURF_FAILURE, payload: err });
+        });
 }
 

@@ -10,9 +10,9 @@ const SmurfList = props => {
     props.getSmurfs();
   }, []);
 
-  useEffect(() => {
-    props.addSmurf();
-  }, [addSmurf])
+  // useEffect(() => {
+  //   props.deleteSmurf();
+  // }, [deleteSmurf])
 
     return (
         <div className="smurf-list" >
@@ -29,7 +29,7 @@ const SmurfList = props => {
                   <SmurfCard 
                   key={smurf.id}
                   smurf={smurf}
-                  addSmurf={addSmurf}
+                  // // deleteSmurf={deleteSmurf}
                   />
                 
               )
