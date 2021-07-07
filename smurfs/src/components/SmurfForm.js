@@ -1,48 +1,32 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addSmurf } from '../actions/action'
+import { addSmurf } from '../actions';
 
 
-class SmurfForm extends Component {
-  const [input, setInput] = useState("");
+const AddSmurf = props => {
+    let [newSmurf, setNewSmurf] = useState({name: '', age: '', height: ''});
 
-  const handleInput = event => {
-    this.setState({
-      [e.target.name]: event.target.value
-    )};
-  };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    if(!this.state.name || !this.state.age || !this.state.height) return;
-    this.props.addSmurf(this.state);
-    this.setState({
-      name: '',
-      age: '',
-      height: ''
-    })
-    // this.props.history.push('/smurfs');
-  };
+    const handleInput = event => {
+        setNewSmurf({
+          ...newSmurf,
+          [event.target.name]: event.target.value
+        });
+      };
 
-  render() {
+    const onSubmit = e => {
+        props.addSmurf(newSmurf);
+    };
+
     return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="name" value={this.state.name} onChange={handleInput} />
-      <input type="text" name="age" value={this.state.age} onChange={handleInput} />
-      <input type="text" name="height" value={this.state.height} onChange={handleInput} />
-      <button type="submit">Add Smurf!</button>
-    </form>
+        <form onSubmit={onSubmit}>
+            <input type="text" name="name"  onChange={handleInput} placeholder="Smurf Name" />
+            <input type="text" name="age"  onChange={handleInput} placeholder="Smurf Age" />
+            <input type="text" name="height"  onChange={handleInput} placeholder="Smurf Height" />
+            <button type="submit">Add Smurf!</button>
+        </form>
     );
-  }
-}
+};
 
 
-
-
-const mapStateToProps = state => {
-    return {
-      smurf: state.smurf
-    }
-  }
-export default connect(mapStateToProps, {})(SmurfForm)
-  
+export default connect(null, {addSmurf})(AddSmurf);

@@ -1,36 +1,37 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import SmurfCard from './SmurfCard';
-import { getSmurfs } from '../actions/action'
+import { getSmurfs, addSmurf } from '../actions';
 
-class SmurfList extends Component {
-    
-  componentDidMount() {
-    this.props.getSmurfs();
-  }
+const SmurfList = props => {
+  console.log("SmurfList", props)
+  useEffect(() => {
+    props.getSmurfs();
+  }, []);
 
-  // deleteSmurf = (e, id) => {
-  //   this.props.deletSmurf(id)
-  // }
+  // useEffect(() => {
+  //   props.addSmurf();
+  // }, [props.smurfs])
 
-  render(){
     return (
         <div className="smurf-list" >
           <h2>This is the Smurf Files!</h2>
-          {this.props.fetchingSmurfs ? (
+          {props.fetchingSmurfs ? (
             <Loader type="Circles" 
                   color="navy" 
                   height={80} 
                   width={80} 
             />) :
-            <ul>{this.props.smurfs.map(smurf => {
+            <ul>{props.smurfs.map(smurf => {
               return (
-                <SmurfCard 
+                
+                  <SmurfCard 
                   key={smurf.id}
                   smurf={smurf}
-                  //deleteSmurf=(this.deleteSmurf) 
-                />
+                  // // deleteSmurf={deleteSmurf}
+                  />
+                
               )
             })}
            </ul>
@@ -38,10 +39,12 @@ class SmurfList extends Component {
         </div>
     )
   }
-} 
-const mapStateToProps = state => {{
+
+const mapStateToProps = state => {
+  return {
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs
+    fetchingSmurfs: state.fetchingSmurfs,
+    error: state.error
 }}
 
-export default connect (mapStateToProps,{ getSmurfs })(SmurfList)
+export default connect (mapStateToProps, { getSmurfs, addSmurf })(SmurfList)
